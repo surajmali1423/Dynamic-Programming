@@ -1,16 +1,26 @@
 package BasicQuestion;
 
 public class FibonacciNumber {
-   public static int Fibbo(int n){
 
+    static int [] dp ;
 
-       if(n == 0 || n == 1) return n;
+    public static int ImplementFibbo(int n){
 
-       return Fibbo(n-1) + Fibbo(n-2);
-   }
+        if(n <= 1) return n;
+        if(dp[n] != 0)  return dp[n];
+        int ans = ImplementFibbo(n-1) + ImplementFibbo(n - 2);
+        dp[n] = ans;
+        return ans;
+    }
+
+    public static int Fibbo(int n){
+         dp = new  int[n + 1];
+
+         return ImplementFibbo(n);
+    }
 
     public static void main(String[] args) {
-        System.out.println(Fibbo(2));
+        System.out.println(Fibbo(6));
     }
 }
 
